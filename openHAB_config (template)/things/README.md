@@ -1,1 +1,1 @@
-## Folder for thing files
+Folder for thing files

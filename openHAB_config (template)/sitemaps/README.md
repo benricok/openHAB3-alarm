@@ -1,1 +1,1 @@
-## Folder for sitemap files
+Folder for sitemap files

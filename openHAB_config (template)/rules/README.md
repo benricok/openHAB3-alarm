@@ -1,1 +1,1 @@
-## Folder for rule files
+Folder for rule files
