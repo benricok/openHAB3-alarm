@@ -1,0 +1,1 @@
+# openHAB-alarm-config-V2
