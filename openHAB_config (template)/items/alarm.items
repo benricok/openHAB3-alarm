@@ -1,0 +1,51 @@
+/* 
+    openHAB-alarm-V2 - configuration templete files for an alarm system built on openHAB
+    Copyright (C) 2021 Benrico Krog
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License version 3 
+    as published by the Free Software Foundation
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see https://www.gnu.org/licenses/agpl-3.0.html.
+*/
+
+// 4ch pro
+Switch  sonoff_4CH_PRO_1_Hek     "4Ch Pro Relay Hek"   {channel="mqtt:topic:sonoff_4CH_PRO_1_THING:PowerSwitch1"}
+Switch  sonoff_4CH_PRO_1_Garage  "4Ch Pro Relay Garage"{channel="mqtt:topic:sonoff_4CH_PRO_1_THING:PowerSwitch2"}
+Switch  sonoff_4CH_PRO_1_3       "4Ch Pro Relay 3"     {channel="mqtt:topic:sonoff_4CH_PRO_1_THING:PowerSwitch3"}
+Switch  sonoff_4CH_PRO_1_Siren   "4Ch Pro Relay Siren" {channel="mqtt:topic:sonoff_4CH_PRO_1_THING:PowerSwitch4"}
+String  sonoff_4CH_PRO_1_Version "4Ch Pro Version"     {channel="mqtt:topic:sonoff_4CH_PRO_1_THING:Version"}
+String  sonoff_4CH_PRO_1_IPaddr  "4Ch Pro IP Address"  {channel="mqtt:topic:sonoff_4CH_PRO_1_THING:IPaddr"}
+String  sonoff_4CH_PRO_1_Hostname "4Ch Pro Hostname"   {channel="mqtt:topic:sonoff_4CH_PRO_1_THING:Hostname"}
+
+// RF bridge
+String  sonoff_RF_1_Device      "Rf bridge Device"      {channel="mqtt:topic:sonoff_RF_1_THING:Device"}
+String  sonoff_RF_1_Version     "Rf bridge Version"     {channel="mqtt:topic:sonoff_RF_1_THING:Version"}
+String  sonoff_RF_1_IPaddr      "Rf bridge IP Address"  {channel="mqtt:topic:sonoff_RF_1_THING:IPaddr"}
+String  sonoff_RF_1_Hostname    "Rf bridge Hostname"    {channel="mqtt:topic:sonoff_RF_1_THING:Hostname"}
+
+// Virtual Switches for alarm zones
+Switch  virtual_security_zone_Beams             "Activate Beams around property execpt Front"
+Switch  virtual_security_zone_Voordeur          "Activate Front Beam"
+Switch  virtual_security_zone_Woonstel          "Activate PIR Sensors in the Flat"
+Switch  virtual_security_zone_Huis              "Activate PIR Sensors in the House"
+Switch  virtual_security_zone_Woonstel_Sleep    "Activate only PIR Sensors in the office and Storage"
+
+//Virtual Siren switch
+Switch virtual_security_siren "Virtual switch siren" {expire="1m, command=OFF"}     
+
+// Esp Beam controller
+Switch  esp_Beam_1           "Front"                {channel="mqtt:topic:esp_BEAM_1_THING:Beam_1"}
+Switch  esp_Beam_2           "Side P2P"             {channel="mqtt:topic:esp_BEAM_1_THING:Beam_2"}
+Switch  esp_Beam_3           "Back P2P"             {channel="mqtt:topic:esp_BEAM_1_THING:Beam_3"}
+Switch  esp_Beam_4           "Carport Back"         {channel="mqtt:topic:esp_BEAM_1_THING:Beam_4"}
+Switch  esp_Beam_5           "Carport Front"        {channel="mqtt:topic:esp_BEAM_1_THING:Beam_5"}
+String  esp_Beam_Version     "Esp Beam Version"     {channel="mqtt:topic:esp_BEAM_1_THING:Version"}
+String  esp_Beam_IPaddr      "Esp Beam IP Address"  {channel="mqtt:topic:esp_BEAM_1_THING:IPaddr"}
+String  esp_Beam_Hostname    "Esp Beam Hostname"    {channel="mqtt:topic:esp_BEAM_1_THING:Hostname"}

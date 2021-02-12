@@ -1,0 +1,58 @@
+/* 
+    openHAB-alarm-V2 - configuration templete files for an alarm system built on openHAB
+    Copyright (C) 2021 Benrico Krog
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License version 3 
+    as published by the Free Software Foundation
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see https://www.gnu.org/licenses/agpl-3.0.html.
+*/
+
+Bridge mqtt:broker:myMQTTBroker "External MQTT Broker"
+[
+    host="172.16.5.3",
+    username="",
+    password="",
+    clientID="openHABMQTTClient"
+]
+
+Thing mqtt:topic:sonoff_4CH_PRO_1_THING "Sonoff 4CH Pro Security - Tasmota" (mqtt:broker:myMQTTBroker) 
+{
+    Channels:
+      Type switch : PowerSwitch1  [ stateTopic="stat/4ch-pro-1/POWER1" , commandTopic="cmnd/4ch-pro-1/POWER1", on="ON", off="OFF"]
+      Type switch : PowerSwitch2  [ stateTopic="stat/4ch-pro-1/POWER2" , commandTopic="cmnd/4ch-pro-1/POWER2", on="ON", off="OFF"]
+      Type switch : PowerSwitch3  [ stateTopic="stat/4ch-pro-1/POWER3" , commandTopic="cmnd/4ch-pro-1/POWER3", on="ON", off="OFF"]
+      Type switch : PowerSwitch4  [ stateTopic="stat/4ch-pro-1/POWER4" , commandTopic="cmnd/4ch-pro-1/POWER4", on="ON", off="OFF"]
+      Type string : Version [stateTopic="tele/4ch-pro-1/INFO1", transformationPattern="JSONPATH:$.Version"]
+      Type string : IPaddr [stateTopic="tele/4ch-pro-1/INFO2", transformationPattern="JSONPATH:$.IPAddress"]
+      Type string : Hostname [stateTopic="tele/4ch-pro-1/INFO2", transformationPattern="JSONPATH:$.Hostname"]
+}
+
+Thing mqtt:topic:sonoff_RF_1_THING "Sonoff RF Bridge - Tasmota" (mqtt:broker:myMQTTBroker) 
+{
+    Channels:
+      Type string : Device [stateTopic="tele/RF-bridge-1/RESULT", transformationPattern="JSONPATH:$.RfReceived.Data"]
+      Type string : Version [stateTopic="tele/RF-bridge-1/INFO1", transformationPattern="JSONPATH:$.Version"]
+      Type string : IPaddr [stateTopic="tele/RF-bridge-1/INFO2", transformationPattern="JSONPATH:$.IPAddress"]
+      Type string : Hostname [stateTopic="tele/RF-bridge-1/INFO2", transformationPattern="JSONPATH:$.Hostname"]
+}
+
+Thing mqtt:topic:esp_BEAM_1_THING "Esp 8266 Beam controller - Tasmota" (mqtt:broker:myMQTTBroker)
+{
+  Channels:
+    Type switch : Beam_1  [ stateTopic="stat/ESP-Beam/BEAM1", on="ON", off="OFF"]
+    Type switch : Beam_2  [ stateTopic="stat/ESP-Beam/BEAM2", on="ON", off="OFF"]
+    Type switch : Beam_3  [ stateTopic="stat/ESP-Beam/BEAM3", on="ON", off="OFF"]
+    Type switch : Beam_4  [ stateTopic="stat/ESP-Beam/BEAM4", on="ON", off="OFF"]
+    Type switch : Beam_5  [ stateTopic="stat/ESP-Beam/BEAM5", on="ON", off="OFF"]
+    Type string : Version [stateTopic="tele/ESP-Beam/INFO1", transformationPattern="JSONPATH:$.Version"]
+    Type string : IPaddr [stateTopic="tele/ESP-Beam/INFO2", transformationPattern="JSONPATH:$.IPAddress"]
+    Type string : Hostname [stateTopic="tele/ESP-Beam/INFO2", transformationPattern="JSONPATH:$.Hostname"]
+}

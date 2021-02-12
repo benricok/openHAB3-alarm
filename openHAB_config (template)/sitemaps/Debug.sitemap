@@ -1,0 +1,62 @@
+/* 
+    openHAB-alarm-V2 - configuration templete files for an alarm system built on openHAB
+    Copyright (C) 2021 Benrico Krog
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License version 3 
+    as published by the Free Software Foundation
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see https://www.gnu.org/licenses/agpl-3.0.html.
+*/
+
+sitemap Debug label="Debug" 
+{
+    Frame
+    {
+        Text label="Alarm" icon="error"
+        {
+            Frame label="Sonoff 4CH Pro"
+            {
+                Switch item=sonoff_4CH_PRO_1_Hek
+                Switch item=sonoff_4CH_PRO_1_Garage
+                Switch item=sonoff_4CH_PRO_1_3
+                Switch item=sonoff_4CH_PRO_1_Siren
+                Text item=sonoff_4CH_PRO_1_Version
+                Text item=sonoff_4CH_PRO_1_IPaddr
+                Text item=sonoff_4CH_PRO_1_Hostname
+            }
+            Frame label="Rf Bridge"
+            {
+                Text item=sonoff_RF_1_Device
+                Text item=sonoff_RF_1_Version
+                Text item=sonoff_RF_1_IPaddr
+                Text item=sonoff_RF_1_Hostname
+            }
+            Frame label="Alarm Zones"
+            {
+                Switch  item=virtual_security_zone_Beams label="Beams"
+                Switch  item=virtual_security_zone_Voordeur label="Front Door Beam"
+                Switch  item=virtual_security_zone_Woonstel label="Woonstel PIR Sensors"
+                Switch  item=virtual_security_zone_Huis label="Home PIR Sensors"
+                Switch  item=virtual_security_siren label="Siren"
+            }
+            Frame label="Beams"
+            {
+                Switch item=esp_Beam_1
+                Switch item=esp_Beam_2
+                Switch item=esp_Beam_3
+                Switch item=esp_Beam_4
+                Switch item=esp_Beam_5
+                Text item=esp_Beam_Version
+                Text item=esp_Beam_IPaddr
+                Text item=esp_Beam_Hostname
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+This is a template config folder required by openhab

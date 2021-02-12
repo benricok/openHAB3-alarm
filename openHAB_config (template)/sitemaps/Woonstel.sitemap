@@ -1,0 +1,40 @@
+/* 
+    openHAB-alarm-V2 - configuration templete files for an alarm system built on openHAB
+    Copyright (C) 2021 Benrico Krog
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License version 3 
+    as published by the Free Software Foundation
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see https://www.gnu.org/licenses/agpl-3.0.html.
+*/
+
+sitemap Woonstel label="Woonstel" 
+{
+    Frame 
+    {
+        Text label="Security" icon="lock"
+        {
+            Frame label="Alarm zones"
+            {
+                Switch  item=virtual_security_zone_Beams label="Beams"
+                Switch  item=virtual_security_zone_Voordeur label="Voordeur Beam"
+                Switch  item=virtual_security_zone_Woonstel label="Woonstel PIR Sensors"
+                Switch  item=virtual_security_zone_Woonstel_Sleep label="Woonstel Sleep"
+                Switch  item=virtual_security_zone_Huis label="Home PIR Sensors"
+            }   
+            Frame label="Other"               
+            {
+                Switch item=sonoff_4CH_PRO_1_Hek label="Hek"
+                Switch item=sonoff_4CH_PRO_1_Garage label="Garage Deur"
+            }
+        }
+    }
+}
+
