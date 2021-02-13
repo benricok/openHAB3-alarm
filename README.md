@@ -23,4 +23,9 @@
     sudo chown -R openhab:openhab ./services/openhab/config
     cp -rf "./openHAB3-alarm/config/ (mosquitto template)" ./services/mosquitto/config   
     ```
+5.  Change the configuration files as you see fit
+6.  Change directory to root directory of the repo and run docker-compose.yml script
+    ```
+    cd openHAB3-alarm && OH_UID=$(id -u openhab) OH_GID=$(id -g openhab) docker-compose up -d
+    ```
 
