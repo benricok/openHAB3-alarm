@@ -2,7 +2,8 @@
 
 ### Required openHAB addons
 1.  MQTT-broker
-2.  myopenHAB-cloud (Optional)
+2.  GPIO-binding
+3.  myopenHAB-cloud (Optional)
 
 ### Installing openhab with the included docker-compose.yml script
 1.  Create openhab user
