@@ -27,9 +27,9 @@ sitemap Debug label="Debug"
                 Switch item=sonoff_4CH_PRO_1_Garage
                 Switch item=sonoff_4CH_PRO_1_3
                 Switch item=sonoff_4CH_PRO_1_Siren
-                Text item=sonoff_4CH_PRO_1_Version
-                Text item=sonoff_4CH_PRO_1_IPaddr
-                Text item=sonoff_4CH_PRO_1_Hostname
+                Text   item=sonoff_4CH_PRO_1_Version
+                Text   item=sonoff_4CH_PRO_1_IPaddr
+                Text   item=sonoff_4CH_PRO_1_Hostname
             }
             Frame label="Rf Bridge"
             {
@@ -40,11 +40,11 @@ sitemap Debug label="Debug"
             }
             Frame label="Alarm Zones"
             {
-                Switch  item=virtual_security_zone_Beams label="Beams"
-                Switch  item=virtual_security_zone_Voordeur label="Front Door Beam"
-                Switch  item=virtual_security_zone_Woonstel label="Woonstel PIR Sensors"
-                Switch  item=virtual_security_zone_Huis label="Home PIR Sensors"
-                Switch  item=virtual_security_siren label="Siren"
+                Switch  item=virtual_security_zone_Beams     label="Beams"
+                Switch  item=virtual_security_zone_FrontDoor label="Front Door Beam"
+                Switch  item=virtual_security_zone_Tenant    label="Woonstel PIR Sensors"
+                Switch  item=virtual_security_zone_House     label="Home PIR Sensors"
+                Switch  item=virtual_security_siren          label="Siren"
             }
             Frame label="Beams"
             {
@@ -53,9 +53,9 @@ sitemap Debug label="Debug"
                 Switch item=esp_Beam_3
                 Switch item=esp_Beam_4
                 Switch item=esp_Beam_5
-                Text item=esp_Beam_Version
-                Text item=esp_Beam_IPaddr
-                Text item=esp_Beam_Hostname
+                Text   item=esp_Beam_Version
+                Text   item=esp_Beam_IPaddr
+                Text   item=esp_Beam_Hostname
             }
         }
     }

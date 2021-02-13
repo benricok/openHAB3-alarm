@@ -23,14 +23,14 @@ sitemap Home label="Home"
         {
             Frame label="Alarm zones"
             {
-                Switch  item=virtual_security_zone_Beams label="Beams"
-                Switch  item=virtual_security_zone_Voordeur label="Front Beam"
-                Switch  item=virtual_security_zone_Huis label="Home PIR Sensors"
+                Switch  item=virtual_security_zone_Beams     label="Beams"
+                Switch  item=virtual_security_zone_FrontDoor label="Front Beam"
+                Switch  item=virtual_security_zone_House     label="Home PIR Sensors"
             }
             Frame label="Other"               
             {
-                Switch item=sonoff_4CH_PRO_1_Hek label="Gate"
-                Switch item=sonoff_4CH_PRO_1_Garage label="Garage Door"
+                Switch item=sonoff_4CH_PRO_1_Hek     label="Gate"
+                Switch item=sonoff_4CH_PRO_1_Garage  label="Garage Door"
             }
         }
     }

@@ -15,7 +15,7 @@
     along with this program.  If not, see https://www.gnu.org/licenses/agpl-3.0.html.
 */
 
-sitemap Woonstel label="Woonstel" 
+sitemap Tenant label="Woonstel" 
 {
     Frame 
     {
@@ -23,15 +23,15 @@ sitemap Woonstel label="Woonstel"
         {
             Frame label="Alarm zones"
             {
-                Switch  item=virtual_security_zone_Beams label="Beams"
-                Switch  item=virtual_security_zone_Voordeur label="Voordeur Beam"
-                Switch  item=virtual_security_zone_Woonstel label="Woonstel PIR Sensors"
-                Switch  item=virtual_security_zone_Woonstel_Sleep label="Woonstel Sleep"
-                Switch  item=virtual_security_zone_Huis label="Home PIR Sensors"
+                Switch  item=virtual_security_zone_Beams        label="Beams"
+                Switch  item=virtual_security_zone_FrontDoor    label="Voordeur Beam"
+                Switch  item=virtual_security_zone_Tenant       label="Woonstel PIR Sensors"
+                Switch  item=virtual_security_zone_Tenant_Sleep label="Woonstel Sleep"
+                Switch  item=virtual_security_zone_House        label="Home PIR Sensors"
             }   
             Frame label="Other"               
             {
-                Switch item=sonoff_4CH_PRO_1_Hek label="Hek"
+                Switch item=sonoff_4CH_PRO_1_Hek    label="Hek"
                 Switch item=sonoff_4CH_PRO_1_Garage label="Garage Deur"
             }
         }

@@ -17,7 +17,7 @@
 
 Bridge mqtt:broker:myMQTTBroker "External MQTT Broker"
 [
-    host="172.17.5.3",            // Enter the ip address of the mqtt broker, leave as is if using provided docker compose file
+    host="172.18.5.3",            // Enter the ip address of the mqtt broker, leave as is if using provided docker compose file
     username="",                  // Enter the username if identity is required
     password="",                  // Enter the password if authentication is required
     clientID="openHABMQTTClient"  // Change if different friendly name is required
@@ -27,21 +27,22 @@ Thing mqtt:topic:sonoff_4CH_PRO_1_THING "Sonoff 4CH Pro Security - Tasmota" (mqt
 {
     Channels:
     //   Type          Name                 state MQTT topic                    command MQTT topic             how to interpret MQTT messages
-      Type switch : PowerSwitch1  [ stateTopic="stat/4ch-pro-1/POWER1" , commandTopic="cmnd/4ch-pro-1/POWER1", on="ON", off="OFF"]
-      Type switch : PowerSwitch2  [ stateTopic="stat/4ch-pro-1/POWER2" , commandTopic="cmnd/4ch-pro-1/POWER2", on="ON", off="OFF"]
-      Type switch : PowerSwitch3  [ stateTopic="stat/4ch-pro-1/POWER3" , commandTopic="cmnd/4ch-pro-1/POWER3", on="ON", off="OFF"]
-      Type switch : PowerSwitch4  [ stateTopic="stat/4ch-pro-1/POWER4" , commandTopic="cmnd/4ch-pro-1/POWER4", on="ON", off="OFF"]
-      Type string : Version [stateTopic="tele/4ch-pro-1/INFO1", transformationPattern="JSONPATH:$.Version"]
-      Type string : IPaddr [stateTopic="tele/4ch-pro-1/INFO2", transformationPattern="JSONPATH:$.IPAddress"]
-      Type string : Hostname [stateTopic="tele/4ch-pro-1/INFO2", transformationPattern="JSONPATH:$.Hostname"]
+      Type switch : PowerSwitch1    [ stateTopic="stat/4ch-pro-1/POWER1" , commandTopic="cmnd/4ch-pro-1/POWER1", on="ON", off="OFF"]
+      Type switch : PowerSwitch2    [ stateTopic="stat/4ch-pro-1/POWER2" , commandTopic="cmnd/4ch-pro-1/POWER2", on="ON", off="OFF"]
+      Type switch : PowerSwitch3    [ stateTopic="stat/4ch-pro-1/POWER3" , commandTopic="cmnd/4ch-pro-1/POWER3", on="ON", off="OFF"]
+      Type switch : PowerSwitch4    [ stateTopic="stat/4ch-pro-1/POWER4" , commandTopic="cmnd/4ch-pro-1/POWER4", on="ON", off="OFF"]
+    //   Type        Name                 state MQTT topic               extract information out of JSON structure
+      Type string : Version      [ stateTopic="tele/4ch-pro-1/INFO1",   transformationPattern="JSONPATH:$.Version"]
+      Type string : IPaddr       [ stateTopic="tele/4ch-pro-1/INFO2",   transformationPattern="JSONPATH:$.IPAddress"]
+      Type string : Hostname     [ stateTopic="tele/4ch-pro-1/INFO2",   transformationPattern="JSONPATH:$.Hostname"]
 }
 
 Thing mqtt:topic:sonoff_RF_1_THING "Sonoff RF Bridge - Tasmota" (mqtt:broker:myMQTTBroker) 
 {
     Channels:
-    //   Type        Name           state MQTT topic                   extract information out of JSON structure
-      Type string : Device [stateTopic="tele/RF-bridge-1/RESULT", transformationPattern="JSONPATH:$.RfReceived.Data"]
-      Type string : Version [stateTopic="tele/RF-bridge-1/INFO1", transformationPattern="JSONPATH:$.Version"]
-      Type string : IPaddr [stateTopic="tele/RF-bridge-1/INFO2", transformationPattern="JSONPATH:$.IPAddress"]
-      Type string : Hostname [stateTopic="tele/RF-bridge-1/INFO2", transformationPattern="JSONPATH:$.Hostname"]
+    //   Type        Name               state MQTT topic                   extract information out of JSON structure
+      Type string : Device      [stateTopic="tele/RF-bridge-1/RESULT", transformationPattern="JSONPATH:$.RfReceived.Data"]
+      Type string : Version     [stateTopic="tele/RF-bridge-1/INFO1",  transformationPattern="JSONPATH:$.Version"]
+      Type string : IPaddr      [stateTopic="tele/RF-bridge-1/INFO2",  transformationPattern="JSONPATH:$.IPAddress"]
+      Type string : Hostname    [stateTopic="tele/RF-bridge-1/INFO2",  transformationPattern="JSONPATH:$.Hostname"]
 }

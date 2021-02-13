@@ -33,14 +33,14 @@
     String  sonoff_RF_1_Hostname    "Rf bridge Hostname"    {channel="mqtt:topic:sonoff_RF_1_THING:Hostname"}
 
 // Virtual Switches for alarm zones
-    Switch  virtual_security_zone_Beams             "Activate Beams around property except Front"
-    Switch  virtual_security_zone_FrontDoor         "Activate Front Beam"
-    Switch  virtual_security_zone_Tenant            "Activate PIR Sensors in the Flat"
-    Switch  virtual_security_zone_House             "Activate PIR Sensors in the House"
-    Switch  virtual_security_zone_Tenant_Sleep      "Activate only PIR Sensors in the office and Storage"
+    Switch  virtual_security_zone_Beams          "Activate Beams around property except Front"
+    Switch  virtual_security_zone_FrontDoor      "Activate Front Beam"
+    Switch  virtual_security_zone_Tenant         "Activate PIR Sensors in the Flat"
+    Switch  virtual_security_zone_House          "Activate PIR Sensors in the House"
+    Switch  virtual_security_zone_Tenant_Sleep   "Activate only PIR Sensors in the office and Storage"
 
-//Virtual Siren switch
-    Switch virtual_security_siren "Virtual switch siren" {expire="1m, command=OFF"}     
+//Virtual Siren switch                                       Requires expire addon
+    Switch virtual_security_siren  "Virtual switch siren"  {expire="1m, command=OFF"}     
 
 // Esp Beam controller
     Switch  esp_Beam_1           "Front"                {channel="mqtt:topic:esp_BEAM_1_THING:Beam_1"}
