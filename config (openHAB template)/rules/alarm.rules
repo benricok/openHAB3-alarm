@@ -1,5 +1,5 @@
 /* 
-    openHAB-alarm-V2 - configuration templete files for an alarm system built on openHAB
+    openHAB-alarm-V2 - configuration template files for an alarm system built on openHAB
     Copyright (C) 2021 Benrico Krog
 
     This program is free software: you can redistribute it and/or modify
@@ -14,10 +14,11 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see https://www.gnu.org/licenses/agpl-3.0.html.
 */
+
 // Imports
 
 
-//Varables
+//Variables (Sonoff Rf-bridge rf tags/id)
 val key1_A = "EF1BC2"
 val key1_B = "EF1BC8"
 val key1_C = "EF1BC1"
@@ -27,6 +28,7 @@ val key2_A = "1E77D2"
 val key2_B = "1E77D8"
 val key2_C = "1E77D1"
 val key2_D = "1E77D4"
+
 /*
 val key2_A = ""
 val key2_B = ""
@@ -57,20 +59,20 @@ val beam3_label = "Back P2P Beam"
 val beam4_label = "Back Car Port Beam"
 val beam5_label = "Front Car Port Beam"
 
-rule "Rf Recived"
+rule "Rf Received"
 when
     Item sonoff_RF_1_Device received update
 then
     Thread::sleep(50) 
     if (sonoff_RF_1_Device.state == key1_A) 
     {
-        if (virtual_security_zone_Woonstel.state == ON) 
+        if (virtual_security_zone_Tenant.state == ON) 
         { 
-            virtual_security_zone_Woonstel.state = OFF
+            virtual_security_zone_Tenant.state = OFF
         }
-        else if (virtual_security_zone_Woonstel.state == OFF || virtual_security_zone_Woonstel.state == NULL)
+        else if (virtual_security_zone_Tenant.state == OFF || virtual_security_zone_Tenant.state == NULL)
         { 
-            virtual_security_zone_Woonstel.state = ON 
+            virtual_security_zone_Tenant.state = ON 
         }
     }
 
@@ -84,26 +86,26 @@ then
         { 
             virtual_security_zone_Beams.state = ON 
         }
-        if (virtual_security_zone_Voordeur.state == ON) 
+        if (virtual_security_zone_FrontDoor.state == ON) 
         { 
-            virtual_security_zone_Voordeur.state = OFF
+            virtual_security_zone_FrontDoor.state = OFF
         }
-        else if (virtual_security_zone_Voordeur.state == OFF || virtual_security_zone_Voordeur.state == NULL)
+        else if (virtual_security_zone_FrontDoor.state == OFF || virtual_security_zone_FrontDoor.state == NULL)
         { 
-            virtual_security_zone_Voordeur.state = ON 
+            virtual_security_zone_FrontDoor.state = ON 
         }
     }
 
     /* Future code
     if (sonoff_RF_1_Device.state == key2_A) 
     {
-        if (virtual_security_zone_Huis.state == ON) 
+        if (virtual_security_zone_House.state == ON) 
         { 
-            virtual_security_zone_Huis.state = OFF
+            virtual_security_zone_House.state = OFF
         }
-        else if (virtual_security_zone_Huis.state == OFF || virtual_security_zone_Huis.state == NULL)
+        else if (virtual_security_zone_House.state == OFF || virtual_security_zone_House.state == NULL)
         { 
-            virtual_security_zone_Huis.state = ON 
+            virtual_security_zone_House.state = ON 
         }
     }
     */
@@ -150,7 +152,7 @@ then
     /*****************************************
                     Alarm Logic
     *****************************************/
-    if (virtual_security_zone_Woonstel.state == ON)
+    if (virtual_security_zone_Tenant.state == ON)
     {
         if (sonoff_RF_1_Device.state == pir1 || sonoff_RF_1_Device.state == pir2 || sonoff_RF_1_Device.state == pir3 || sonoff_RF_1_Device.state == pir4)
         {
@@ -159,7 +161,7 @@ then
         }
     }
 
-    if (virtual_security_zone_Woonstel_Sleep.state == ON)
+    if (virtual_security_zone_Tenant_Sleep.state == ON)
     {
         if (sonoff_RF_1_Device.state == pir3 || sonoff_RF_1_Device.state == pir4)
         {
@@ -169,7 +171,7 @@ then
     }
 
     /* Future pir code
-    if (virtual_security_zone_Huis.state == ON)
+    if (virtual_security_zone_House.state == ON)
     {
         if (sonoff_RF_1_Device.state == pir5 || sonoff_RF_1_Device.state == pir6 || sonoff_RF_1_Device.state == pir7 || sonoff_RF_1_Device.state == pir8)
         {
@@ -180,11 +182,11 @@ then
     */
 end
 
-rule "Beam Voordeur triggered"
+rule "Beam Front Door triggered"
 when
-    Item esp_Beam_Voordeur received update
+    Item esp_Beam_1 received update
 then
-    if (virtual_security_zone_Voordeur.state == ON && esp_Beam_1.state == ON)
+    if (virtual_security_zone_FrontDoor.state == ON && esp_Beam_1.state == ON)
     {
         virtual_security_siren.sendCommand(ON)    
         //sendNotification("bfjkrog@pm.me", "Voordeur Beam")

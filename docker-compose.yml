@@ -1,7 +1,7 @@
 version: '2.4'
 services:
   openhab:
-    image: "openhab/openhab:3.0.1-debian"
+    image: "openhab/openhab:2.5.12-debian"
     container_name: openHAB-server
     restart: unless-stopped
     networks:
